@@ -7,9 +7,9 @@ using RepositoryLayer.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("GreetingDB");
-
 // Add services to the container.
 builder.Services.AddDbContext<GreetingDBContext>(options => options.UseSqlServer(connectionString));
+
 builder.Services.AddControllers();
 
 //Add Swagger
