@@ -1,8 +1,9 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "HelloGreetingApplication",
-    "version": "1.0"
+    "title": "Hello Greeting API",
+    "description": "API for managing greeting messages",
+    "version": "v1"
   },
   "paths": {
     "/HelloGreeting": {
@@ -10,6 +11,8 @@
         "tags": [
           "HelloGreeting"
         ],
+        "summary": "Retrieves a greeting message.",
+        "description": "API Endpoint: `GET HelloGreeting`",
         "responses": {
           "200": {
             "description": "OK"
@@ -20,6 +23,8 @@
         "tags": [
           "HelloGreeting"
         ],
+        "summary": "Adds a new greeting.",
+        "description": "API Endpoint: `POST HelloGreeting`",
         "requestBody": {
           "content": {
             "application/json": {
@@ -49,6 +54,8 @@
         "tags": [
           "HelloGreeting"
         ],
+        "summary": "Removes a greeting by key.",
+        "description": "API Endpoint: `DELETE HelloGreeting`",
         "parameters": [
           {
             "name": "key",
@@ -70,6 +77,8 @@
         "tags": [
           "HelloGreeting"
         ],
+        "summary": "Updates an existing greeting.",
+        "description": "API Endpoint: `PUT HelloGreeting/{key}`",
         "parameters": [
           {
             "name": "key",
@@ -97,6 +106,8 @@
         "tags": [
           "HelloGreeting"
         ],
+        "summary": "Partially updates a greeting.",
+        "description": "API Endpoint: `PATCH HelloGreeting/{key}`",
         "parameters": [
           {
             "name": "key",
@@ -126,6 +137,8 @@
         "tags": [
           "HelloGreeting"
         ],
+        "summary": "Fetches the greeting message from business logic.",
+        "description": "API Endpoint: `GET HelloGreeting/Greet`",
         "responses": {
           "200": {
             "description": "OK"
@@ -138,6 +151,8 @@
         "tags": [
           "HelloGreeting"
         ],
+        "summary": "Creates a personalized greeting using request body.",
+        "description": "API Endpoint: `POST HelloGreeting/personalizedgreet`",
         "requestBody": {
           "content": {
             "application/json": {
@@ -169,6 +184,8 @@
         "tags": [
           "HelloGreeting"
         ],
+        "summary": "Adds a new greeting.",
+        "description": "API Endpoint: `POST HelloGreeting/addgreet`",
         "requestBody": {
           "content": {
             "application/json": {
@@ -200,6 +217,8 @@
         "tags": [
           "HelloGreeting"
         ],
+        "summary": "Retrieves a greeting by its ID.",
+        "description": "API Endpoint: `GET HelloGreeting/getgreetbyid/{id}`",
         "parameters": [
           {
             "name": "id",
@@ -223,6 +242,8 @@
         "tags": [
           "HelloGreeting"
         ],
+        "summary": "Retrieves all stored greetings.",
+        "description": "API Endpoint: `GET HelloGreeting/getallgreeting`",
         "responses": {
           "200": {
             "description": "OK"
@@ -235,6 +256,8 @@
         "tags": [
           "HelloGreeting"
         ],
+        "summary": "Updates a greeting by ID.",
+        "description": "API Endpoint: `PUT HelloGreeting/{id}`",
         "parameters": [
           {
             "name": "id",
@@ -275,6 +298,8 @@
         "tags": [
           "HelloGreeting"
         ],
+        "summary": "Deletes a greeting by ID.",
+        "description": "API Endpoint: `DELETE HelloGreeting/{id}`",
         "parameters": [
           {
             "name": "id",
@@ -285,6 +310,18 @@
               "format": "int32"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/HelloGreeting/throw": {
+      "get": {
+        "tags": [
+          "HelloGreeting"
         ],
         "responses": {
           "200": {

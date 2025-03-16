@@ -1,9 +1,13 @@
 using BusinessLayer.Interface;
+using BusinessLayer.Middleware;
 using BusinessLayer.Service;
+using HelloGreetingApplication;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using RepositoryLayer.Context;
 using RepositoryLayer.Interface;
 using RepositoryLayer.Service;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("GreetingDB");
@@ -14,13 +18,34 @@ builder.Services.AddControllers();
 
 //Add Swagger
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Hello Greeting API",
+        Version = "v1",
+        Description = "API for managing greeting messages"
+    });
+    // Register Custom Operation Filter
+    c.OperationFilter<CustomSwaggerOperations>();
+});
 builder.Services.AddScoped<IGreetingBL, GreetingBL>();
 builder.Services.AddScoped<IGreetingRL, GreetingRL>();
+
+//Add Redis
+var redisConnectionString = builder.Configuration.GetConnectionString("Redis");
+builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
+
+// Register middleware as a service
+builder.Services.AddScoped<ExceptionHandlingMiddleware>();
+
+
+
 
 
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 // Configure the HTTP request pipeline.
 
 app.UseSwagger();

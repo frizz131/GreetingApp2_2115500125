@@ -344,6 +344,21 @@ namespace HelloGreetingApplication.Controllers
             });
         }
 
+        [HttpGet("throw")]
+        public IActionResult ThrowException()
+        {
+            try
+            {
+                throw new ArgumentException("Invalid input provided!");
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+
+
 
 
 
