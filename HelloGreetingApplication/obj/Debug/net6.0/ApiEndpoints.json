@@ -207,7 +207,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "forgotPasswordDTO",
+        "Name": "forgotPasswordDto",
         "Type": "ModelLayer.DTO.ForgotPasswordDTO",
         "IsRequired": true
       }
@@ -255,7 +255,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "resetPasswordDTO",
+        "Name": "resetPasswordDto",
         "Type": "ModelLayer.DTO.ResetPasswordDTO",
         "IsRequired": true
       }

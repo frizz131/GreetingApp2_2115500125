@@ -1,4 +1,3 @@
-using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using BusinessLayer.Helper;
 using BusinessLayer.Interface;
@@ -69,6 +68,7 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Conn
 builder.Services.AddScoped<ExceptionHandlingMiddleware>();
 
 builder.Services.AddSingleton<PasswordHasher>();
+builder.Services.AddSingleton<EmailService>();
 
 
 
